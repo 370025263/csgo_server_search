@@ -1,28 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>FATHER: {{f_time}}   {{t_time}}</p>
+    <Datepicker @event_send="get_data" v-show="true" ></Datepicker>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Datepicker from './components/Datepicker.vue'
 
 export default {
   name: 'App',
+  data(){
+    return {
+      f_time:'',
+      t_time:''
+    }
+  },
   components: {
-    HelloWorld
+    Datepicker
+  },
+  methods:{
+    get_data:function (value) {
+      alert("got")
+      this.f_time = value.value1
+      this.t_time = value.value2
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
